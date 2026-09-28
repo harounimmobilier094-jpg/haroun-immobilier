@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "images"
+
+collections:
+  - name: "listings"
+    label: "العقارات"
+    files:
+      - name: "listings"
+        label: "قائمة العقارات"
+        file: "listings.json"
+        fields:
+          - label: "العقارات"
+            name: "listings"
+            widget: "list"
+            summary: "{{fields.type}} - {{fields.city}} - {{fields.price}}"
+            fields:
+              - {label: "معرف فريد (بالإنجليزية بدون مسافات)", name: "id", widget: "string"}
+              - {label: "النوع", name: "type", widget: "select", options: ["للبيع", "للكراء"]}
+              - {label: "المدينة", name: "city", widget: "string"}
+              - {label: "السعر", name: "price", widget: "string"}
+              - {label: "الوصف", name: "description", widget: "text"}
+              - {label: "رسالة واتساب", name: "whatsapp_text", widget: "string"}
+              - {label: "الصور", name: "images", widget: "list", field: {label: "صورة", name: "image", widget: "image"}}
